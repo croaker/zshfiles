@@ -1,3 +1,8 @@
 export PATH=$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 eval "$(rbenv init -)"
-export PATH=.bin:$PATH # Bundler binstubs
+
+# Add q'n'd support for bundler's binstubs
+export PATH=.bin:$PATH
+
+# Make <c-s> and <c-q> work
+stty stop '' -ixon -ixoff
