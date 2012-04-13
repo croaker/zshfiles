@@ -13,22 +13,23 @@ autoload -U colors
 colors
 setopt prompt_subst
 
-# Prompt
-local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
-
-PROMPT='
-%~
-${smiley}  %{$reset_color%}'
-
-RPROMPT='%{$fg[white]%} $(rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
-
 # Load all config files
 for config_file (~/.zshfiles/lib/*.zsh) source $config_file
 
 # Load bundles
 for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
+ 
+# Prompt
+local exit_status="%(?,%{$FG[154]%}\$%{$reset_color%},%{$FG[197]%}\$%{$reset_color%})"
+
+PROMPT='
+%{$FG[238]%}%~
+${exit_status} %{$reset_color%}'
+
+RPROMPT='%{$FG[238]%} $(rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Load completions for Ruby, Git, etc.
 autoload compinit
 compinit
 
+EDITOR="vim"
