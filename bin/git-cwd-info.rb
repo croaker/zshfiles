@@ -35,11 +35,11 @@ def git_cwd_untracked
 end
 
 def git_cwd_dirty
-  prompt = ""
+  prompt = " "
 
   unless git_repo_path == '.'
-    prompt = " %{\033[38;5;161m%}±%{\e[0m%}" unless `git ls-files -m`.strip.empty?
-    prompt += "%{\033[38;5;112m%}•%{\e[0m%}" unless `git ls-files -o`.strip.empty?
+    prompt += "%{\033[38;5;161m%}±%{\e[0m%}" unless `git ls-files -m`.strip.empty?
+    prompt += "%{\033[38;5;39m%}•%{\e[0m%}" unless `git ls-files -o`.strip.empty?
   end
 
   prompt
