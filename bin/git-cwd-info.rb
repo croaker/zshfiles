@@ -30,8 +30,19 @@ def git_head_commit_id
   `git rev-parse --short HEAD 2>/dev/null`.strip
 end
 
+def git_cwd_untracked
+
+end
+
 def git_cwd_dirty
-  " %{\033[38;5;198m%}✗%{\e[0m%}" unless git_repo_path == '.' || `git ls-files -m`.strip.empty?
+  prompt = ""
+
+  unless git_repo_path == '.'
+    prompt = " %{\033[38;5;161m%}±%{\e[0m%}" unless `git ls-files -m`.strip.empty?
+    prompt += "%{\033[38;5;112m%}•%{\e[0m%}" unless `git ls-files -o`.strip.empty?
+  end
+
+  prompt
 end
 
 def rebasing_etc
@@ -45,5 +56,5 @@ def rebasing_etc
 end
 
 if in_git_repo
-  print " %{\033[38;5;099m%}#{git_parse_branch} %{\033[38;5;141m%}#{git_head_commit_id}%{\e[0m%}#{rebasing_etc}#{git_cwd_dirty}"
+  print " %{\033[38;5;208m%}#{git_parse_branch}%{\e[0m%}#{rebasing_etc}#{git_cwd_dirty}"
 end
