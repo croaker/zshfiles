@@ -13,6 +13,8 @@ autoload -U colors
 colors
 setopt prompt_subst
 
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
 # Load all config files
 for config_file (~/.zshfiles/lib/*.zsh) source $config_file
 
