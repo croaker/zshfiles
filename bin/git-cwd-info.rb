@@ -30,16 +30,12 @@ def git_head_commit_id
   `git rev-parse --short HEAD 2>/dev/null`.strip
 end
 
-def git_cwd_untracked
-
-end
-
 def git_cwd_dirty
   prompt = " "
 
   unless git_repo_path == '.'
     prompt += "%{\033[38;5;161m%}±%{\e[0m%}" unless `git ls-files -m`.strip.empty?
-    prompt += "%{\033[38;5;39m%}•%{\e[0m%}" unless `git ls-files -o`.strip.empty?
+    prompt += "%{\033[38;5;39m%}•%{\e[0m%}" unless `git ls-files -o --exclude-standard`.strip.empty?
   end
 
   prompt
