@@ -1,6 +1,10 @@
 ZSH_FILES = File.expand_path(File.dirname(__FILE__))
 
-task :default => [:link_dotfiles, :link_bin]
+task :default => [:update, :link_dotfiles, :link_bin]
+
+task :update do
+  `git submodule update --init`
+end
 
 task :link_dotfiles do
   %w(zshrc zshenv).each do |script|
