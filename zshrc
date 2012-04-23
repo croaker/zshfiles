@@ -13,8 +13,6 @@ autoload -U colors
 colors
 setopt prompt_subst
 
-export LSCOLORS=gxfxcxdxbxegedabagacad
-
 # Load all config files
 for config_file (~/.zshfiles/lib/*.zsh) source $config_file
 
@@ -25,13 +23,11 @@ for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
 local exit_status="%(?,%{$FG[154]%}\$%{$reset_color%},%{$FG[197]%}\$%{$reset_color%})"
 
 PROMPT='
-%{$FG[238]%}%~
+%{$FG[238]%}%~ $(~/bin/git-cwd-info.rb)
 ${exit_status} %{$reset_color%}'
-
-RPROMPT='%{$FG[238]%} $(rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Load completions for Ruby, Git, etc.
 autoload compinit
 compinit
 
-EDITOR="vim"
+export EDITOR="vim"
