@@ -31,3 +31,6 @@ autoload compinit
 compinit
 
 export EDITOR="vim"
+
+# Use emacs key bindings
+bindkey -e
