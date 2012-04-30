@@ -52,5 +52,5 @@ def rebasing_etc
 end
 
 if in_git_repo
-  print "(%{\033[38;5;208m%}#{git_parse_branch}%{\e[0m%}#{rebasing_etc}#{git_cwd_dirty}%{\033[38;5;238m%})"
+  print " (%{\033[38;5;208m%}#{git_parse_branch}%{\e[0m%}#{rebasing_etc}#{git_cwd_dirty}%{\033[38;5;238m%})"
 end

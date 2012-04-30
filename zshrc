@@ -21,9 +21,12 @@ for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
  
 # Prompt
 local exit_status="%(?,%{$FG[154]%}\$%{$reset_color%},%{$FG[197]%}\$%{$reset_color%})"
+if [ -n "$SSH_CLIENT" ]; then
+  local ssh_info=" - %{$FG[198]%}.:REMOTE CONNECTION!:.%{$reset_color%}"
+fi
 
 PROMPT='
-%{$FG[238]%}%~ $(~/bin/git-cwd-info.rb)
+%{$FG[238]%}%~$(~/bin/git-cwd-info.rb)${ssh_info}
 ${exit_status} %{$reset_color%}'
 
 # Load completions for Ruby, Git, etc.
