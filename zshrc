@@ -18,12 +18,19 @@ for config_file (~/.zshfiles/lib/*.zsh) source $config_file
 
 # Load bundles
 for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
+
+# Load the theme, if necessary
+if [ -f ~/.zshtheme ]; then
+  source ~/.zshtheme
+else
+  source ~/.zshfiles/colors/default.zsh
+fi
  
 # Prompt
-local exit_status="%(?,%{$FG[154]%}\$%{$reset_color%},%{$FG[197]%}\$%{$reset_color%})"
+local exit_status="%(?,%{$FG[$PC_GOOD_EXIT]%}\$%{$reset_color%},%{$FG[$PC_BAD_EXIT]%}\$%{$reset_color%})"
 
 PROMPT='
-%{$FG[238]%}%~ $(~/bin/git-cwd-info.rb)
+%~ $(~/bin/git-cwd-info.rb)
 ${exit_status} %{$reset_color%}'
 
 # Load completions for Ruby, Git, etc.

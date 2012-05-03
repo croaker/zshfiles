@@ -34,8 +34,8 @@ def git_cwd_dirty
   prompt = ""
 
   unless git_repo_path == '.'
-    prompt += "%{\033[38;5;161m%}±%{\e[0m%}" unless `git ls-files -m`.strip.empty?
-    prompt += "%{\033[38;5;39m%}•%{\e[0m%}" unless `git ls-files -o --exclude-standard`.strip.empty?
+    prompt += "%{\033[38;5;#{ENV['PC_GIT_CHANGES']}m%}±%{\e[0m%}" unless `git ls-files -m`.strip.empty?
+    prompt += "%{\033[38;5;#{ENV['PC_GIT_UNTRACKED']}m%}•%{\e[0m%}" unless `git ls-files -o --exclude-standard`.strip.empty?
   end
 
   (prompt == "") ? prompt : " #{prompt}"
@@ -52,5 +52,5 @@ def rebasing_etc
 end
 
 if in_git_repo
-  print "(%{\033[38;5;208m%}#{git_parse_branch}%{\e[0m%}#{rebasing_etc}#{git_cwd_dirty}%{\033[38;5;238m%})"
+  print "(%{\033[38;5;#{ENV['PC_GIT_BRANCH']}m%}#{git_parse_branch}%{\e[0m%}#{rebasing_etc}#{git_cwd_dirty}%{\e[0m%})"
 end
