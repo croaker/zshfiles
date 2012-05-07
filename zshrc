@@ -28,6 +28,9 @@ fi
  
 # Prompt
 local exit_status="%(?,%{$FG[$PC_GOOD_EXIT]%}\$%{$reset_color%},%{$FG[$PC_BAD_EXIT]%}\$%{$reset_color%})"
+if [ -n "$SSH_CLIENT" ]; then
+  local ssh_info=" - %{$FG[001]%}SSH CONNECTION!%{$reset_color%}"
+fi
 
 PROMPT='
 %~ $(~/bin/git-cwd-info.rb)
