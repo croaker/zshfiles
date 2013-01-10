@@ -1,6 +1,6 @@
-ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty -F' || alias ls='ls -GF'
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty -FH' || alias ls='ls -GFH'
 
-alias l="ls -lAh"
+alias l="ls -lA"
 alias ll="ls -l"
 alias la='ls -A'
 
