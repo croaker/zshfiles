@@ -1,11 +1,4 @@
-export PATH=$HOME/.rbenv/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
-[ -n `which rbenv` ] && eval "$(rbenv init -)"
-
-# Add q'n'd support for bundler's binstubs
-export PATH=bin:$PATH
-
-# Make NPM aware of modules (if installed with brew)
-export NODE_PATH=/usr/local/lib/node_modules
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 # Ruby configs, if available
 export RUBY_HEAP_MIN_SLOTS=1000000

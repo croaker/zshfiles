@@ -33,7 +33,7 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 
 PROMPT='
-%~ $(~/bin/git-cwd-info.rb)
+%~ $(git-cwd-info.rb)
 ${ssh_info}${exit_status} %{$reset_color%}'
 
 # Load completions for Ruby, Git, etc.
