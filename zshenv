@@ -1,3 +1,6 @@
+# Add zshfiles' binaries
+export PATH=~/.zshfiles/bin:$PATH
+
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 # Ruby configs, if available
