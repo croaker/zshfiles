@@ -20,7 +20,11 @@ function ln_with_backup () {
   ln -s $SRC $TARGET
 }
 
+echo "Linking dotfiles"
 for DOTFILE in zshenv zshrc
 do
   ln_with_backup $ZSH_FILES/$DOTFILE $HOME/.$DOTFILE
 done
+
+echo "Initializing and updating modules"
+cd $ZSH_FILES && git submodule update --init
