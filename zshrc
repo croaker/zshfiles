@@ -13,11 +13,11 @@ autoload -U colors
 colors
 setopt prompt_subst
 
-# Load all config files
-for config_file (~/.zshfiles/lib/*.zsh) source $config_file
-
 # Load bundles
 for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
+
+# Load all config files
+for config_file (~/.zshfiles/lib/*.zsh) source $config_file
 
 # Load the theme, if necessary
 if [ -f ~/.zshtheme ]; then
@@ -44,11 +44,4 @@ export EDITOR="vim"
 
 # Use emacs key bindings
 bindkey -e
-
-# keybindings
-for keycode in '[' '0'; do
-  bindkey "^[${keycode}A" history-substring-search-up
-  bindkey "^[${keycode}B" history-substring-search-down
-done
-unset keycode
 
