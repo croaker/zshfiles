@@ -7,6 +7,10 @@ export PATH=~/.zshfiles/bin:$PATH
 if [ -d $HOME/.rbenv ]; then
   export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
   eval "$(rbenv init -)"
+else if [ -d /usr/local/rbenv ]; then
+  export RBENV_ROOT=/usr/local/rbenv
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  eval "$(rbenv init -)"
 fi
 
 # Ruby configs, if available
