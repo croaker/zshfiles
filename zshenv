@@ -1,9 +1,6 @@
 # Add zshfiles' binaries
 export PATH=~/.zshfiles/bin:$PATH
 
-# If we are running boxen, use it
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
 if [ -d $HOME/.rbenv ]; then
   export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
   eval "$(rbenv init -)"

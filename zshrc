@@ -8,6 +8,11 @@
 #   Geoffrey Grosenbach http://peepcode.com
 #   Oh My Zsh https://github.com/robbyrussell/oh-my-zsh
 
+fpath=(~/.zshfiles/completion $fpath)
+
+# If we are running boxen, use it
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
 # Colors
 autoload -U colors
 colors
