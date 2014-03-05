@@ -8,8 +8,8 @@ if [ -d $HOME/.rbenv ]; then
 fi
 
 # chruby compatibility
-if [ -d /usr/local/opt/chruby/share/chruby ]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
+if [ -d /usr/local/share/chruby ]; then
+  source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
 fi
 
