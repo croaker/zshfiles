@@ -30,7 +30,7 @@ if [ -f ~/.zshtheme ]; then
 else
   source ~/.zshfiles/colors/default.zsh
 fi
- 
+
 # Prompt
 local exit_status="%(?,%{$FG[$PC_GOOD_EXIT]%}\$%{$reset_color%},%{$FG[$PC_BAD_EXIT]%}\$%{$reset_color%})"
 if [ -n "$SSH_CLIENT" ]; then
