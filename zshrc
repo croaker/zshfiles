@@ -10,9 +10,6 @@
 
 fpath=(~/.zshfiles/completion $fpath)
 
-# If we are running boxen, use it
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
 # Colors
 autoload -U colors
 colors
@@ -21,9 +18,6 @@ setopt prompt_subst
 # Load bundles
 for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
 
-# Load all config files
-for config_file (~/.zshfiles/lib/*.zsh) source $config_file
-
 # Load the theme, if necessary
 if [ -f ~/.zshtheme ]; then
   source ~/.zshtheme
@@ -31,15 +25,6 @@ else
   source ~/.zshfiles/colors/default.zsh
 fi
 
-# Prompt
-local exit_status="%(?,%{$FG[$PC_GOOD_EXIT]%}\$%{$reset_color%},%{$FG[$PC_BAD_EXIT]%}\$%{$reset_color%})"
-if [ -n "$SSH_CLIENT" ]; then
-  local ssh_info="%{$FG[001]%}➠ %m%{$reset_color%} "
-fi
-
-PROMPT='
-%~ $(git-cwd-info.rb)
-${ssh_info}${exit_status} %{$reset_color%}'
 
 # Load completions for Ruby, Git, etc.
 autoload compinit
@@ -50,3 +35,15 @@ export EDITOR="vim"
 # Use emacs key bindings
 bindkey -e
 
+# Load all config files
+for config_file (~/.zshfiles/config/*.zsh) source $config_file
+
+# Prompt
+local exit_status="%(?,%{$FG[$PC_GOOD_EXIT]%}\$%{$reset_color%},%{$FG[$PC_BAD_EXIT]%}\$%{$reset_color%})"
+if [ -n "$SSH_CLIENT" ]; then
+  local ssh_info="%{$FG[001]%}➠ %m%{$reset_color%} "
+fi
+
+PROMPT='
+%~ $(git-cwd-info.rb)
+${ssh_info}${exit_status} %{$reset_color%}'
