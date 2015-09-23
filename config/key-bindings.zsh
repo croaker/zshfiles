@@ -9,7 +9,7 @@ bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
 # Keybindings for the history search plugin
-if [[ "$(uname)" = "Darwin" ]] || [[ "${TERM#screen}" != "$TERM" ]]; then
+if [[ "$(uname)" = "Darwin" ]]; then
   bindkey '^[[A' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
 else
