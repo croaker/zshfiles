@@ -8,6 +8,10 @@ export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
 
+# Configure locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 #Make <c-s> and <c-q> work
 stty stop '' -ixon -ixoff
 
