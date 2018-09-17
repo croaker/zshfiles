@@ -1,3 +1,4 @@
+export NVM_NO_USE=true
 local BREW_NVM_PATH="/usr/local/opt/nvm"
 
 if [ -d "$BREW_NVM_PATH" ]; then
@@ -5,5 +6,3 @@ if [ -d "$BREW_NVM_PATH" ]; then
 else
   export NVM_DIR="$HOME/.nvm"
 fi
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use

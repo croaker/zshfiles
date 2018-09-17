@@ -10,13 +10,16 @@
 
 fpath=(~/.zshfiles/completion $fpath)
 
+# Before we do anything make sure we're running tmux
+if [ "$TMUX" = "" ]; then 
+  tmux attach -t base || tmux new -s base; 
+fi
+
 # Colors
 autoload -U colors
 colors
 setopt prompt_subst
 
-# Load bundles
-for zsh_file (~/.zshfiles/bundle/**/*.zsh) source $zsh_file
 
 # Load the theme, if necessary
 if [ -f ~/.zshtheme ]; then
@@ -24,7 +27,6 @@ if [ -f ~/.zshtheme ]; then
 else
   source ~/.zshfiles/colors/default.zsh
 fi
-
 
 # Load completions for Ruby, Git, etc.
 autoload compinit
@@ -34,6 +36,18 @@ export EDITOR="vim"
 
 # Use emacs key bindings
 bindkey -e
+
+# Load early config files
+for config_file (~/.zshfiles/config/early.d/*.zsh) source $config_file
+
+# Load bundles
+source /usr/local/share/antigen/antigen.zsh
+
+antigen bundle lukechilds/zsh-nvm
+antigen bundle zsh-users/zsh-syntax-highlighting # must be before history!
+antigen bundle zsh-users/zsh-history-substring-search # must be last!
+
+antigen apply
 
 # Load all config files
 for config_file (~/.zshfiles/config/*.zsh) source $config_file
@@ -47,3 +61,5 @@ fi
 PROMPT='
 %~ $(git-cwd-info.rb)
 ${ssh_info}${exit_status} %{$reset_color%}'
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
