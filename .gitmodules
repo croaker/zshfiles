@@ -1,6 +1,0 @@
-[submodule "bundle/history-search"]
-	path = bundle/history-search
-	url = git://github.com/zsh-users/zsh-history-substring-search.git
-[submodule "bundle/zsh-syntax-highlighting"]
-	path = bundle/zsh-syntax-highlighting
-	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
