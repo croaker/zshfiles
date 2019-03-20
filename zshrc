@@ -27,7 +27,6 @@ autoload -U colors
 colors
 setopt prompt_subst
 
-
 # Load the theme, if necessary
 if [ -f ~/.zshtheme ]; then
   source ~/.zshtheme
@@ -50,7 +49,6 @@ for config_file (~/.zshfiles/config/early.d/*.zsh) source $config_file
 # Load bundles
 source /usr/local/share/antigen/antigen.zsh
 
-antigen bundle lukechilds/zsh-nvm
 antigen bundle zsh-users/zsh-syntax-highlighting # must be before history!
 antigen bundle zsh-users/zsh-history-substring-search # must be last!
 
@@ -68,5 +66,3 @@ fi
 PROMPT='
 %~ $(git-cwd-info.rb)
 ${ssh_info}${exit_status} %{$reset_color%}'
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
