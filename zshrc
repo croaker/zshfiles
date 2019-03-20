@@ -8,6 +8,13 @@
 #   Geoffrey Grosenbach http://peepcode.com
 #   Oh My Zsh https://github.com/robbyrussell/oh-my-zsh
 
+# Configure locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Add zshfiles bin to path
+export PATH=~/.zshfiles/bin:$PATH
+
 fpath=(~/.zshfiles/completion $fpath)
 
 # Before we do anything make sure we're running tmux
