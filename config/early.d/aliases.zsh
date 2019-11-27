@@ -4,8 +4,6 @@ alias l="ls -lA"
 alias ll="ls -l"
 alias la='ls -A'
 
-alias tmux="TERM=screen-256color-bce tmux"
-
 # If git is aliased to hub, wrap it in a function
 if $(alias | grep -q '^git='); then
   unalias git

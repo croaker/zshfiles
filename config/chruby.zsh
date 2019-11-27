@@ -1,7 +1,9 @@
-local chruby_path=/usr/local/share/chruby
+export CHRUBY_PATH=/usr/local/share/chruby
 
-if [ -d "$chruby_path" ]; then
-  source "$chruby_path/chruby.sh"
-  source "$chruby_path/auto.sh"
+if [ -d "$CHRUBY_PATH" ]; then
+  source "$CHRUBY_PATH/chruby.sh"
+  source "$CHRUBY_PATH/auto.sh"
   [ -f ~/.ruby-version ] && chruby $(cat ~/.ruby-version) 
+else
+  unset CHRUBY_PATH
 fi

@@ -20,4 +20,6 @@ if [ -d "$ANACONDA_PATH" ]; then
   }
 
   alias brew=anaconda_brew
+else
+  unset ANACONDA_PATH
 fi

@@ -13,14 +13,14 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Add zshfiles bin to path
-export PATH=~/.zshfiles/bin:$PATH
+export PATH=~/.zshfiles/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 fpath=(~/.zshfiles/completion $fpath)
 
 # Before we do anything make sure we're running tmux
-if [ "$TMUX" = "" ]; then 
-  tmux attach -t base || tmux new -s base; 
-fi
+# if [ "$TMUX" = "" ]; then 
+#   tmux attach -t base || tmux new -s base; 
+# fi
 
 # Colors
 autoload -U colors
@@ -49,7 +49,7 @@ for config_file (~/.zshfiles/config/early.d/*.zsh) source $config_file
 # Load bundles
 source /usr/local/share/antigen/antigen.zsh
 
-antigen bundle zsh-users/zsh-syntax-highlighting # must be before history!
+antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search # must be last!
 
 antigen apply
